@@ -1,0 +1,28 @@
+{
+  "name": "caradisiac",
+  "version": "1.0.0",
+  "description": "An api that get the list of SUV with great specs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo-op/caradisiac.git"
+  },
+  "keywords": [
+    "car"
+  ],
+  "author": "Manasa Prakash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mo-op/caradisiac/issues"
+  },
+  "homepage": "https://github.com/mo-op/caradisiac#readme",
+  "dependencies": {
+    "node-car-api": "git+https://github.com/92bondstreet/node-car-api.git"
+  }
+}
