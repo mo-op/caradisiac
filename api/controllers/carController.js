@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 
@@ -5,11 +7,8 @@ const {getBrands} = require('node-car-api');
 const {getModels} = require('node-car-api');
 var elasticsearch = require('elasticsearch');
 
-/* GET */
-router.get('/populate', function(req, res, next) {
-
-  // connect to elasticsearch
-  var client = new elasticsearch.Client({
+exports.setData = function(req,res, next){
+	 var client = new elasticsearch.Client({
     host: 'localhost:9200',
   });
 
@@ -25,7 +24,7 @@ router.get('/populate', function(req, res, next) {
 });
   
 //getting data from the website and indexing it (is bulk index happening?)
-  async function getData () {
+  async function loadData () {
     const brands = await getBrands();
     brands.forEach(async brand => {
         const models = await getModels(brand);
@@ -48,7 +47,12 @@ router.get('/populate', function(req, res, next) {
         });    
     });
   }
-  getData();
-});
+  loadData();
 
-module.exports = router;
+}
+
+exports.getData = function(req,res, next){
+	//TO:DO
+
+}
+
