@@ -16,6 +16,7 @@ router.get('/populate', function(req, res, next) {
     host: 'localhost:9200',
   });
 
+//test for es
   client.ping({
   requestTimeout: 30000,
 }, function (error) {
@@ -26,6 +27,7 @@ router.get('/populate', function(req, res, next) {
   }
 });
   
+//getting data from the website and indexing it (is bulk index happening?)
   async function getData () {
     const brands = await getBrands();
     brands.forEach(async brand => {
