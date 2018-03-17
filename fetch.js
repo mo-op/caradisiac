@@ -15,8 +15,18 @@ router.get('/populate', function(req, res, next) {
   var client = new elasticsearch.Client({
     host: 'localhost:9200',
   });
+
+  client.ping({
+  requestTimeout: 30000,
+}, function (error) {
+  if (error) {
+    console.error('Elastic Cluster down');
+  } else {
+    console.log('Elastic Cluster Running');
+  }
+});
   
-  async function generatorJson () {
+  async function getData () {
     const brands = await getBrands();
     brands.forEach(async brand => {
         const models = await getModels(brand);
@@ -39,7 +49,7 @@ router.get('/populate', function(req, res, next) {
         });    
     });
   }
-  generatorJson();
+  getData();
 });
 
 module.exports = router;
