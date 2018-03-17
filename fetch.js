@@ -6,7 +6,6 @@ const {getModels} = require('node-car-api');
 
 var jsonfile = require('jsonfile');
 var fs = require('fs');
-var readline = require('readline');
 var elasticsearch = require('elasticsearch');
 
 /* GET */
@@ -27,8 +26,8 @@ router.get('/populate', function(req, res, next) {
             var jsonObject = JSON.parse(line);
               
             client.create({
-              index: 'modelcars',
-              type: 'modelcar',
+              index: 'cars',
+              type: 'car',
               id: jsonObject['uuid'],
               body: jsonObject
             }, function (error, response) {
