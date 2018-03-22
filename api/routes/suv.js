@@ -3,6 +3,11 @@ const es = require('./connection')
 
 var client = es.client
 
+/**
+Function:
+-go through data using query to get cars with largest volume
+*/
+
 exports.getSuv = (callback) => {
   client.search({
     index: 'cars',

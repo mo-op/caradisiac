@@ -1,7 +1,11 @@
+ /**
+*Car Api
+ */ 
   const {
   getBrands,
   getModels
 } = require('node-car-api');
+
 
 const es = require('./connection')
 
@@ -11,7 +15,12 @@ function headerElasticSearch(id) {
   return
 }
 
-
+/**
+Functions:
+-scrape data using API 
+-add Index
+-push bulk data
+*/
 function addIndexElastic(data) {
   var indexedData = []
   console.log(data.length);
@@ -23,7 +32,7 @@ function addIndexElastic(data) {
         _id: i
       }
     })
-    
+
     indexedData.push(data[i])
   }
   console.log(indexedData)
