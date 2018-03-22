@@ -1,4 +1,4 @@
-const {
+  const {
   getBrands,
   getModels
 } = require('node-car-api');
@@ -12,9 +12,10 @@ function headerElasticSearch(id) {
 }
 
 
-function addIndexElastic(tab) {
+function addIndexElastic(data) {
   var indexedData = []
-  for (var i in tab) {
+  console.log(data.length);
+  for (var i in data) {
     indexedData.push({
       index: {
         _index: 'cars',
@@ -22,7 +23,7 @@ function addIndexElastic(tab) {
         _id: i
       }
     })
-    indexedData.push(tab[i])
+    indexedData.push(data[i])
   }
   console.log(indexedData)
   client.bulk({
