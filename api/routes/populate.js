@@ -23,6 +23,7 @@ function addIndexElastic(data) {
         _id: i
       }
     })
+    
     indexedData.push(data[i])
   }
   console.log(indexedData)
