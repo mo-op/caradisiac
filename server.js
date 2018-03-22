@@ -1,7 +1,26 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000;
+const bodyParser = require('body-parser')
+const express = require('express')
+const app = express();
+const populate = require('./api/routes/populate')
+const suv = require('./api/routes/suv')
 
-app.listen(port);
+app.use(bodyParser.json())
 
-console.log('Caradisiac API server started on: ' + port);
+// const router = express.Router()
+
+app.get('/populate', (req, res) => {
+  populate.addInElastic((err, results) => {
+    res.json(results);
+  })
+})
+
+app.get('/suv', (req, res) => {
+  suv.getSuv((err, results) => {
+    res.json(results)
+  })
+})
+
+const port = 3000
+app.listen(port, () => {
+  console.log("Listening on port " + port);
+})

@@ -28,7 +28,7 @@ router.get('/populate', function(req, res, next) {
   async function getData () {
     const brands = await getBrands();
     brands.forEach(async brand => {
-        const models = await getModels(brand);
+        const models = await getodels(brand);
         models.forEach(model => {
             var line ='{"brand":"'+model.brand+'","model":"'+model.model+'","volume":"'+model.volume+'","uuid":"'+model.uuid+'","name":"'+model.name+'"}';    
             
