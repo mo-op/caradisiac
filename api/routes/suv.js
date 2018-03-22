@@ -1,7 +1,7 @@
 const elasticsearch = require('elasticsearch');
-const es = require('./connection')
+const con = require('./connection')
 
-var client = es.client
+var client = con.client
 
 /**
 Function:
