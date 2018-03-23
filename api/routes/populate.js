@@ -1,11 +1,7 @@
- /**
-*Car Api
- */ 
-  const {
+const {
   getBrands,
   getModels
 } = require('node-car-api');
-
 
 const con = require('./connection')
 
@@ -15,16 +11,10 @@ function headerElasticSearch(id) {
   return
 }
 
-/**
-Functions:
--scrape data using API 
--add Index
--push bulk data
-*/
-function addIndexElastic(data) {
+
+function addIndexElastic(tab) {
   var indexedData = []
-  console.log(data.length);
-  for (var i in data) {
+  for (var i in tab) {
     indexedData.push({
       index: {
         _index: 'cars',
@@ -32,8 +22,7 @@ function addIndexElastic(data) {
         _id: i
       }
     })
-
-    indexedData.push(data[i])
+    indexedData.push(tab[i])
   }
   console.log(indexedData)
   client.bulk({
@@ -44,7 +33,7 @@ function addIndexElastic(data) {
 }
 
 exports.addInElastic = (callback) => {
-  console.log(" ###### Scrapping models ######");
+  console.log("Scrapping car models...");
   getBrands().then(function(brands) {
     let promises = []
     for (var i = 0; i < brands.length; i++) {

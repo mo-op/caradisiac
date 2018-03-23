@@ -10,12 +10,15 @@ Function:
 
 exports.getSuv = (callback) => {
   client.search({
-    index: 'cars',
+  index: 'cars',
     type: 'car',
-  
+    body: {
+      sort: {
+        volume: {
+          order: 'desc'
         }
-      }
-    }
+      }}
+  }
   }).then(function(resp) {
     var hits = resp.hits.hits;
     return callback(null, hits)
@@ -23,3 +26,4 @@ exports.getSuv = (callback) => {
     console.trace(err.message)
   })
 }
+
