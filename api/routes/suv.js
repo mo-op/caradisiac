@@ -12,10 +12,7 @@ exports.getSuv = (callback) => {
   client.search({
     index: 'cars',
     type: 'car',
-    body: {
-      sort: {
-        volume: {
-          order: 'desc'
+  
         }
       }
     }
